@@ -14,8 +14,18 @@ export const createUserService = () => {
     return response.data;
   };
 
+  /**
+   * @desc Authenticates user credentials
+   * @returns User data with authentication tokens
+   */
+  const loginUser = async (user) => {
+    const response = await axiosInstance.post("/users/login", user);
+    return response.data;
+  };
+
   return {
     ...baseService,
     registerUser,
+    loginUser,
   };
 };

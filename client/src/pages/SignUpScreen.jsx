@@ -12,7 +12,7 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
-import  CenteredLayout  from "../layouts/CenteredLayout";
+import CenteredLayout from "../layouts/CenteredLayout";
 
 import { useRegisterUser } from "../services/user/userQueries";
 
@@ -41,7 +41,7 @@ function SignUpScreen() {
           <p className="text-xs text-gray-500">Sign up to start connecting</p>
         </Stack>
 
-        <Stack gap="xs">
+        <Stack gap="lg">
           <TextInput
             required
             placeholder="Full Name"
