@@ -1,6 +1,6 @@
-import { axiosInstance } from "@/configs/axios";
+import { axiosInstance } from "../../configs/axios";
 
-import { createBaseService } from "@services/baseService";
+import { createBaseService } from "../baseService";
 
 export const createUserService = () => {
   const baseService = createBaseService("/users");
