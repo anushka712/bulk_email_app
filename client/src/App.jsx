@@ -1,12 +1,16 @@
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router";
+import SignInScreen from "./pages/SignInScreen";
+import SignUpScreen from "./pages/SignUpScreen";
 
 function App() {
   return (
-    <>
-      <div className=" flex justify-center items-center text-5xl text-red-500 h-screen">
-        Hello World!
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SignInScreen />} />
+        <Route path="/sign-up" element={<SignUpScreen />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
