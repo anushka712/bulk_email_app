@@ -2,6 +2,8 @@ import { useMutation } from "@tanstack/react-query";
 
 import { createUserService } from "./userService";
 
+import { toast } from "react-toastify";
+
 const userService = createUserService();
 
 /**
@@ -11,6 +13,13 @@ const userService = createUserService();
 export const useRegisterUser = () => {
   return useMutation({
     mutationFn: userService.registerUser,
+    onError: (error) => {
+      const msg =
+        error?.response?.data?.message ||
+        error.message ||
+        "Something went wrong!";
+      toast.error(msg);
+    },
   });
 };
 
@@ -21,5 +30,12 @@ export const useRegisterUser = () => {
 export const useLoginUser = () => {
   return useMutation({
     mutationFn: userService.loginUser,
+    onError: (error) => {
+      const msg =
+        error?.response?.data?.message ||
+        error.message ||
+        "Something went wrong!";
+      toast.error(msg);
+    },
   });
 };
