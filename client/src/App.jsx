@@ -4,6 +4,7 @@ import SignInScreen from "./pages/SignInScreen";
 import SignUpScreen from "./pages/SignUpScreen";
 import { ToastContainer } from "react-toastify";
 import Dashboard from "./pages/Dashboard";
+import VerifyEmail from "./pages/VerifyEmail";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SignInScreen />} />
         <Route path="/sign-up" element={<SignUpScreen />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <ToastContainer />

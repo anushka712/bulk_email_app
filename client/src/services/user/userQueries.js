@@ -48,7 +48,28 @@ export const useLoginUser = () => {
 
     onSuccess: (response) => {
       const msg =
-        response?.data?.message || response.message || "Login SUccessful!";
+        response?.data?.message || response.message || "Login Successfully!";
+      toast.success(msg);
+    },
+  });
+};
+
+export const useVerifyEmail = () => {
+  return useMutation({
+    mutationFn: (token) => userService.verifyEmail(token),
+    onError: (error) => {
+      const msg =
+        error?.response?.data?.message ||
+        error.message ||
+        "Something went wrong!";
+      toast.error(msg);
+    },
+
+    onSuccess: (response) => {
+      const msg =
+        response?.data?.message ||
+        response.message ||
+        "Email Verification SUccessful!";
       toast.success(msg);
     },
   });
