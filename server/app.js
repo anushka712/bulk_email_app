@@ -4,6 +4,7 @@ config();
 
 import { createServer } from "node:http";
 import express from "express";
+import { Server as SocketIO } from "socket.io";
 import cors from "cors";
 import { connectDB } from "./src/configs/db.config.js";
 import appRouter from "./src/routes/app.router.js";
@@ -26,6 +27,10 @@ app.use(cors("*"));
 app.use("/api/v1", appRouter);
 
 app.use(errorMiddleware);
+
+export const io = new SocketIO(server, {
+  cors: { origin: "*" }, 
+});
 
 server.listen(PORT, () => {
   console.log(`Server is 🏃 at ${PORT}`);

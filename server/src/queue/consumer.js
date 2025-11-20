@@ -4,6 +4,8 @@ import { EmailLog } from "../models/emailLog.model.js";
 
 import { mailTransport } from "../configs/mailer.config.js";
 
+import { io } from "../../app.js";
+
 export const startConsumer = async () => {
   const connection = await amqp.connect(process.env.RABBIT_URL);
   const channel = await connection.createChannel();
@@ -26,20 +28,24 @@ export const startConsumer = async () => {
           html: template.template.replace("{{username}}", user.name),
         });
 
-        await EmailLog.create({
+        const log = await EmailLog.create({
           email: user.email,
           templateId,
           status: "SUCCESS",
         });
 
+        io.emit("new-email-log", log);
+
         await new Promise((res) => setTimeout(res, 5000));
       } catch (error) {
-        await EmailLog.create({
+        const log = await EmailLog.create({
           email: user.email,
           templateId,
           status: "FAILED",
           error: error.message,
         });
+
+        io.emit("new-email-log", log);
       }
     }
 
