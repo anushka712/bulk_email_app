@@ -20,6 +20,14 @@ export const useRegisterUser = () => {
         "Something went wrong!";
       toast.error(msg);
     },
+
+    onSuccess: (response) => {
+      const msg =
+        response?.data?.message ||
+        response?.message ||
+        "Register Successfully!";
+      toast.success(msg);
+    },
   });
 };
 
@@ -36,6 +44,12 @@ export const useLoginUser = () => {
         error.message ||
         "Something went wrong!";
       toast.error(msg);
+    },
+
+    onSuccess: (response) => {
+      const msg =
+        response?.data?.message || response.message || "Login SUccessful!";
+      toast.success(msg);
     },
   });
 };

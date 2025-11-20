@@ -1,16 +1,19 @@
-import { createServer } from "node:http";
 import { config } from "dotenv";
+
+config();
+
+import { createServer } from "node:http";
 import express from "express";
 import cors from "cors";
 import { connectDB } from "./src/configs/db.config.js";
 import appRouter from "./src/routes/app.router.js";
-import errorMiddleware from "./src/middlewares/errorMiddleware.js";
-
-config();
+import errorMiddleware from "./src/middlewares/errorMiddleWare.js";
+import { connectQueue } from "./src/queue/producer.js";
+import { startConsumer } from "./src/queue/consumer.js";
 
 connectDB();
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -27,3 +30,6 @@ app.use(errorMiddleware);
 server.listen(PORT, () => {
   console.log(`Server is 🏃 at ${PORT}`);
 });
+
+await connectQueue();
+await startConsumer();
