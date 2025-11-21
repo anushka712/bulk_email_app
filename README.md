@@ -30,8 +30,8 @@ Make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <https://github.com/anushka712/bulk_email_app.git>
-cd <bulk_email_app>
+git clone https://github.com/anushka712/bulk_email_app.git
+cd bulk_email_app
 ```
 
 ---
