@@ -22,10 +22,10 @@ export const startConsumer = async () => {
     for (let user of users) {
       try {
         await mailTransport.sendMail({
-          from: "no-reply@test.com",
+          from: '"Test App" <no-reply@test.com>',
           to: user.email,
           subject: template.type,
-          html: template.template.replace("{{username}}", user.name),
+          html: template.template.replace("[username]", user.name),
         });
 
         const log = await EmailLog.create({

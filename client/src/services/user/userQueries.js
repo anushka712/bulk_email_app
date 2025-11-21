@@ -25,7 +25,7 @@ export const useRegisterUser = () => {
       const msg =
         response?.data?.message ||
         response?.message ||
-        "Register Successfully!";
+        "Register Successfully! please verify your email with the link sent to your email";
       toast.success(msg);
     },
   });
@@ -47,6 +47,7 @@ export const useLoginUser = () => {
     },
 
     onSuccess: (response) => {
+      window.localStorage.setItem("loggedInUser", JSON.stringify(response));
       const msg =
         response?.data?.message || response.message || "Login Successfully!";
       toast.success(msg);
