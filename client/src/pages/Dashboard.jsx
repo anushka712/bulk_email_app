@@ -1,8 +1,9 @@
+import { useState } from "react";
 import {
   useGetEmailTemplate,
   useProcessBulkEmail,
 } from "../services/emailTemplate/emailTemplateQueries";
-import { useState } from "react";
+
 import { Select, FileInput, Button, Stack } from "@mantine/core";
 
 import { convertExcelToJSON } from "../utils/convertExcelToJSON";
@@ -61,6 +62,7 @@ const Dashboard = () => {
           <label className="block mb-2 font-medium text-gray-700">
             Select Email Template
           </label>
+          
           <Select
             data={templateOptions}
             value={selectedTemplate}

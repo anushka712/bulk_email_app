@@ -24,7 +24,7 @@ export const getEmailTemplateList = asyncHandler(async (req, res) => {
     },
     {
       $facet: {
-        data: [{ $sort: { type: 1 } }], // add data facet
+        data: [{ $sort: { type: 1 } }],
         total: [{ $count: "total" }],
       },
     },
@@ -40,6 +40,10 @@ export const getEmailTemplateList = asyncHandler(async (req, res) => {
   });
 });
 
+/**
+ * @desc Process Bulk Email
+ * @route "/emailTemplate/bulk-email"
+ */
 export const processBulkEmail = async (req, res) => {
   const { templateId, users } = req.body;
 

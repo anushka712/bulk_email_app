@@ -8,7 +8,7 @@ import { Server as SocketIO } from "socket.io";
 import cors from "cors";
 import { connectDB } from "./src/configs/db.config.js";
 import appRouter from "./src/routes/app.router.js";
-import errorMiddleware from "./src/middlewares/errorMiddleWare.js";
+import errorMiddleware from "./src/middlewares/errorMiddleware.js";
 import { connectQueue } from "./src/queue/producer.js";
 import { startConsumer } from "./src/queue/consumer.js";
 
@@ -29,7 +29,7 @@ app.use("/api/v1", appRouter);
 app.use(errorMiddleware);
 
 export const io = new SocketIO(server, {
-  cors: { origin: "*" }, 
+  cors: { origin: "*" },
 });
 
 server.listen(PORT, () => {

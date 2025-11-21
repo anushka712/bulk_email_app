@@ -78,6 +78,11 @@ export const loginUser = asyncHandler(async (req, res) => {
     );
 });
 
+
+/**
+ * @desc Email Verification
+ * @route "/users/verify-email"
+ */
 export const verifyEmail = asyncHandler(async (req, res) => {
   const { token } = req.query;
 

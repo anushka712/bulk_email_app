@@ -9,8 +9,11 @@ const VerifyEmail = () => {
   const [verified, setVerified] = useState(false);
 
   const token = searchParams.get("token");
+
+  //Queries
   const { mutateAsync: verifyEmail } = useVerifyEmail();
 
+  //Methods
   useEffect(() => {
     const verify = async () => {
       if (!token) {
