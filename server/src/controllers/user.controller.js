@@ -5,6 +5,8 @@ import { User } from "../models/user.model.js";
 import crypto from "crypto";
 
 import { mailTransport } from "../configs/mailer.config.js";
+import { HttpStatus } from "../constants/httpStatus.js";
+import { generateAccessToken } from "../configs/jwt.config.js";
 
 /**
  * @desc POST New User
@@ -69,7 +71,11 @@ export const loginUser = asyncHandler(async (req, res) => {
   if (!(await user?.matchPassword(password)))
     res.status(404).json({ message: "Password doesn't match" });
 
-  res.status(200).json(user);
+  res
+    .status(HttpStatus.OK)
+    .json(
+      Object.assign(user.toObject(), { token: generateAccessToken(user._id) })
+    );
 });
 
 export const verifyEmail = asyncHandler(async (req, res) => {

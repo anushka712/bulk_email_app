@@ -1,7 +1,6 @@
-import React from "react";
 import { Link, useNavigate } from "react-router";
 
-import { ActionIcon, Button, Group, Stack, TextInput } from "@mantine/core";
+import { Button, Stack, TextInput } from "@mantine/core";
 
 import { useForm } from "@mantine/form";
 
@@ -10,6 +9,8 @@ import CenteredLayout from "../layouts/CenteredLayout";
 import { useLoginUser } from "../services/user/userQueries";
 
 import { initialValues, validateSignIn } from "../validations/signInValidation";
+
+import { IconMailOpened, IconLock } from "@tabler/icons-react";
 
 function SignInScreen() {
   const form = useForm({
@@ -52,6 +53,7 @@ function SignInScreen() {
             size="sm"
             key={form.key("email")}
             {...form.getInputProps("email")}
+            leftSection={<IconMailOpened size={14} />}
           />
 
           <TextInput
@@ -62,17 +64,9 @@ function SignInScreen() {
             size="sm"
             key={form.key("password")}
             {...form.getInputProps("password")}
+            leftSection={<IconLock size={14} />}
           />
         </Stack>
-
-        <Group justify="end" className="text-sm mt-2">
-          <div
-            className="cursor-pointer text-blue-600 hover:underline"
-            onClick={() => navigate("/forgot-password")}
-          >
-            Forgot Password?
-          </div>
-        </Group>
 
         <Button
           fullWidth
@@ -80,6 +74,7 @@ function SignInScreen() {
           size="md"
           type="submit"
           loading={isPending}
+          className="mt-4"
         >
           Sign In
         </Button>

@@ -3,8 +3,11 @@ import {
   getEmailTemplateList,
   processBulkEmail,
 } from "../controllers/emailTemplate.controller.js";
+import { authenticate } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
+
+router.use(authenticate);
 
 router.route("/").get(getEmailTemplateList);
 
