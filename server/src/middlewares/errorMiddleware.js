@@ -1,13 +1,5 @@
 import { HttpStatus } from "../constants/httpStatus.js";
 
-// export const NOT_FOUND_HANDLER = (req, res, next) => {
-//   const error = new Error(`Not Found: ${req.originalUrl}`);
-
-//   res.status(404);
-
-//   next(error);
-// };
-
 const errorMiddleware = (error, req, res, next) => {
   let errorMessage = error?.message;
 

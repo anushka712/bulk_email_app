@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 const emailTemplateService = createEmailTemplateService();
 
 /**
- *
  * @param {*} params
  * @desc Email Template List
  * @returns query
@@ -17,6 +16,10 @@ export const useGetEmailTemplate = (params = {}) =>
     queryFn: () => emailTemplateService.getAll(params),
   });
 
+
+  /**
+   * @desc Process bulk email
+   */
 export const useProcessBulkEmail = () => {
   return useMutation({
     mutationFn: (payload) => emailTemplateService.processBulkEmail(payload),

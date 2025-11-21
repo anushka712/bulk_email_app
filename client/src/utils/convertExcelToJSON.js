@@ -1,6 +1,6 @@
 import * as XLSX from "xlsx";
 
-// Utility function
+//Convert excel file data to JSON data
 export const convertExcelToJSON = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

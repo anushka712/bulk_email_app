@@ -55,6 +55,9 @@ export const useLoginUser = () => {
   });
 };
 
+/**
+ * @desc Email Verification
+ */
 export const useVerifyEmail = () => {
   return useMutation({
     mutationFn: (token) => userService.verifyEmail(token),

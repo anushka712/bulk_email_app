@@ -25,7 +25,6 @@ export const createUserService = () => {
 
   /**
    * @desc Authenticates email
-   * @returns User data with authentication tokens
    */
   const verifyEmail = async (token) => {
     const response = await axiosInstance.post(

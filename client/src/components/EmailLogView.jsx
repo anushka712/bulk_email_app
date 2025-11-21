@@ -3,7 +3,9 @@ import { io } from "socket.io-client";
 
 import { Table, ScrollArea, Text } from "@mantine/core";
 
-const socket = io("http://localhost:5000");
+const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+const socket = io(`${VITE_API_BASE_URL}`);
 
 export default function EmailLogViewer() {
   const [logs, setLogs] = useState([]);
@@ -34,7 +36,7 @@ export default function EmailLogViewer() {
         update automatically. "Status" indicates whether the email was sent
         successfully or if there was an error.
       </Text>
-      
+
       <ScrollArea className="mt-4 h-fit border rounded-lg shadow-md">
         <Table className="min-w-full border-collapse">
           <thead className="bg-gray-200">
