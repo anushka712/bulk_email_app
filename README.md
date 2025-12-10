@@ -1,6 +1,6 @@
 # Bulk Email App
 
-A full-stack **Bulk Email Application** built to send emails efficiently using a queue system, with real-time logs and user authentication.
+A scalable bulk email system using RabbitMQ for background processing, real-time logs with Socket.IO, and secure JWT-based authentication
 
 ---
 
